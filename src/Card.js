@@ -1,28 +1,24 @@
 "use strict";
-import React, {Component} from "react";
-import {StyleSheet, View} from "react-native";
+import React, {PropTypes} from "react";
+import {Platform, StyleSheet, View} from "react-native";
+const requireNativeComponent = require("requireNativeComponent");
 
 const Card = React.createClass({
 
 	propTypes: {
-		...View.propTypes,
-		elevation: React.PropTypes.number,
-		backgroundColour: React.PropTypes.string,
-		bottomShadowColour: React.PropTypes.string,
-		topShadowColour: React.PropTypes.string,
 		class: React.PropTypes.oneOf(["default", "transparent"]),
-		paddingVertical: React.PropTypes.number,
-		paddingHorizontal: React.PropTypes.number
+		...View.propTypes
 	},
 
 	getDefaultProps() {
 		return {
-			elevation: 0,
-			class: "default"
+			class: "default",
+			style: {}
 		};
 	},
 
 	render() {
+		// TODO: Remove the following code when styles are implemented from content
 		let defaultStyles = styles[this.props.class];
 
 		let overrideStyles = {}
@@ -48,8 +44,18 @@ const Card = React.createClass({
 			overrideStyles["paddingHorizontal"] = this.props.paddingHorizontal;
 		}
 
+		if (Platform.OS === "android") {
+			return (
+				<AndroidCardView
+					style={[styles.container, defaultStyles, this.props.style, overrideStyles]}
+				>
+					{this.props.children}
+				</AndroidCardView>
+			);
+		}
+
 		return (
-			<View elevation={Number(this.props.elevation)} style={[styles.container, defaultStyles, this.props.style, overrideStyles]}>
+			<View style={[styles.container, defaultStyles, this.props.style, overrideStyles]}>
 				{this.props.children}
 			</View>
 		);
@@ -71,6 +77,13 @@ const styles = StyleSheet.create({
 	},
 
 	transparent: {}
+});
+
+const AndroidCardView = requireNativeComponent("RNCardView", {
+	name: "RNCardView",
+	propTypes: {
+		...View.propTypes
+	},
 });
 
 export default Card;

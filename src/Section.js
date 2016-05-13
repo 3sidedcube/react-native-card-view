@@ -1,7 +1,7 @@
 "use strict";
 import React, {Component} from "react";
 import {StyleSheet, View, Text} from "react-native";
-import Card from "./Card"
+import Card from "./Card";
 
 const Section = React.createClass({
 
