@@ -1,7 +1,6 @@
 package com.cube.rn.cardview;
 
 import android.graphics.Color;
-import android.support.v7.widget.CardView;
 
 import com.facebook.csslayout.CSSConstants;
 import com.facebook.react.uimanager.PixelUtil;
@@ -14,12 +13,10 @@ import com.facebook.react.uimanager.annotations.ReactPropGroup;
 /**
  * Created by tim on 13/05/2016.
  */
-public class RNCardViewManager extends ViewGroupManager<CardView>
+public class RNCardViewManager extends ViewGroupManager<ReactCardView>
 {
 	public static final String REACT_CLASS = "RNCardView";
-	private static final String PROP_BACKGROUND_COLOR = ViewProps.BACKGROUND_COLOR;
 	private static final String PROP_ELEVATION = "elevation";
-	private static final String PROP_CORNER_RADIUS = "cornerRadius";
 
 	@Override
 	public String getName()
@@ -28,23 +25,23 @@ public class RNCardViewManager extends ViewGroupManager<CardView>
 	}
 
 	@Override
-	protected CardView createViewInstance(ThemedReactContext reactContext)
+	protected ReactCardView createViewInstance(ThemedReactContext reactContext)
 	{
-		return new CardView(reactContext);
+		return new ReactCardView(reactContext);
 	}
 
 	@Override
 	@ReactProp(name = ViewProps.BACKGROUND_COLOR,
 	           defaultInt = Color.WHITE,
 	           customType = "Color")
-	public void setBackgroundColor(CardView view, int backgroundColor)
+	public void setBackgroundColor(ReactCardView view, int backgroundColor)
 	{
 		view.setCardBackgroundColor(backgroundColor);
 	}
 
 	@ReactProp(name = ViewProps.BORDER_RADIUS,
 	           defaultFloat = CSSConstants.UNDEFINED)
-	public void setBorderRadius(CardView view, float borderRadius)
+	public void setBorderRadius(ReactCardView view, float borderRadius)
 	{
 		if (!CSSConstants.isUndefined(borderRadius))
 		{
@@ -55,7 +52,7 @@ public class RNCardViewManager extends ViewGroupManager<CardView>
 	@Override
 	@ReactProp(name = PROP_ELEVATION,
 	           defaultFloat = CSSConstants.UNDEFINED)
-	public void setElevation(CardView view, float elevation)
+	public void setElevation(ReactCardView view, float elevation)
 	{
 		if (!CSSConstants.isUndefined(elevation))
 		{
@@ -65,7 +62,7 @@ public class RNCardViewManager extends ViewGroupManager<CardView>
 
 	@ReactPropGroup(names = {ViewProps.PADDING, ViewProps.PADDING_HORIZONTAL, ViewProps.PADDING_VERTICAL, ViewProps.PADDING_TOP, ViewProps.PADDING_BOTTOM,
 	                         ViewProps.PADDING_LEFT, ViewProps.PADDING_RIGHT}, defaultFloat = CSSConstants.UNDEFINED)
-	public void setPadding(CardView view, int index, float padding)
+	public void setPadding(ReactCardView view, int index, float padding)
 	{
 		int paddingPx = (int) PixelUtil.toPixelFromDIP(padding);
 

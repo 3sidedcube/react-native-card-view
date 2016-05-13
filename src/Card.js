@@ -6,8 +6,7 @@ const requireNativeComponent = require("requireNativeComponent");
 const Card = React.createClass({
 
 	propTypes: {
-		class: React.PropTypes.oneOf(["default", "transparent"]),
-		...View.propTypes
+		class: React.PropTypes.oneOf(["default", "transparent"]), ...View.propTypes
 	},
 
 	getDefaultProps() {
@@ -79,11 +78,6 @@ const styles = StyleSheet.create({
 	transparent: {}
 });
 
-const AndroidCardView = requireNativeComponent("RNCardView", {
-	name: "RNCardView",
-	propTypes: {
-		...View.propTypes
-	},
-});
+const AndroidCardView = requireNativeComponent("RNCardView", Card);
 
 export default Card;
