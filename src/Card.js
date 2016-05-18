@@ -2,11 +2,21 @@
 import React, {PropTypes} from "react";
 import {Platform, StyleSheet, View} from "react-native";
 const requireNativeComponent = require("requireNativeComponent");
+var ColorPropType = require('ColorPropType');
 
 const Card = React.createClass({
 
 	propTypes: {
-		class: React.PropTypes.oneOf(["default", "transparent"]), ...View.propTypes
+		...View.propTypes,
+		class: React.PropTypes.oneOf(["default", "transparent"]), 
+		backgroundColor: ColorPropType,
+		topShadowColour: ColorPropType,
+		bottomShadowColour: ColorPropType,
+		backgroundColor: ColorPropType,
+		topShadowColour: ColorPropType,
+		bottomShadowColour: ColorPropType,
+		paddingHorizontal: React.PropTypes.number,
+		paddingVertical: React.PropTypes.number
 	},
 
 	getDefaultProps() {
