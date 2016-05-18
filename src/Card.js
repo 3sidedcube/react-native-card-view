@@ -6,7 +6,13 @@ const requireNativeComponent = require("requireNativeComponent");
 const Card = React.createClass({
 
 	propTypes: {
-		class: React.PropTypes.oneOf(["default", "transparent"]), ...View.propTypes
+		...View.propTypes,
+		class: React.PropTypes.oneOf(["default", "transparent"]), 
+		backgroundColor: React.PropTypes.string,
+		topShadowColour: React.PropTypes.string,
+		bottomShadowColour: React.PropTypes.string,
+		paddingHorizontal: React.PropTypes.number,
+		paddingVertical: React.PropTypes.number
 	},
 
 	getDefaultProps() {
