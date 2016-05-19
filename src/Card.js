@@ -12,9 +12,6 @@ const Card = React.createClass({
 		backgroundColor: ColorPropType,
 		topShadowColour: ColorPropType,
 		bottomShadowColour: ColorPropType,
-		backgroundColor: ColorPropType,
-		topShadowColour: ColorPropType,
-		bottomShadowColour: ColorPropType,
 		paddingHorizontal: React.PropTypes.number,
 		paddingVertical: React.PropTypes.number
 	},
