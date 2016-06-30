@@ -8,7 +8,6 @@ const Card = React.createClass({
 
 	propTypes: {
 		...View.propTypes,
-		class: React.PropTypes.oneOf(["default", "transparent"]), 
 		backgroundColor: ColorPropType,
 		topShadowColour: ColorPropType,
 		bottomShadowColour: ColorPropType,
@@ -25,7 +24,7 @@ const Card = React.createClass({
 
 	render() {
 		// TODO: Remove the following code when styles are implemented from content
-		let defaultStyles = styles[this.props.class];
+		let defaultStyles = styles.default;
 
 		let overrideStyles = {}
 		if (this.props.backgroundColour) {
@@ -80,9 +79,7 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		borderBottomColor: "#d2d2d2",
 		backgroundColor: "#fff"
-	},
-
-	transparent: {}
+	}
 });
 
 const AndroidCardView = requireNativeComponent("RNCardView", Card);
